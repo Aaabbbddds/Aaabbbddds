@@ -4,7 +4,7 @@
  *
  *Telegram : @TILON
  */
-$API_KEY = 'token';
+$API_KEY = '5265066335:AAHPJEsAjeHkhug8yGRMiuznlNJrHeyHhck';
 ##------------------------------##
 define('API_KEY',$API_KEY);
 function bot($method,$datas=[]){
