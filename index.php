@@ -62,7 +62,7 @@ $start_time = round(microtime(true) * 1000);
                     bot('editMessagetext',[
                         "chat_id" => $chat_id,
                         "message_id" => $send,
-                        "text" => "Tezlik:" . $time_taken . "ms",
+                        "text" => "Tezlikkkk:" . $time_taken . "ms",
                     ]);
 }
 $u = json_decode(file_get_contents('php://input'));
