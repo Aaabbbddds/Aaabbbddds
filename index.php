@@ -50,7 +50,21 @@ $start_time = round(microtime(true) * 1000);
                     ]);
 }
 ###
-
+if(preg_match('/^\/([Ss]park)/',$text)){
+$start_time = round(microtime(true) * 1000);
+      $send=  bot('sendmessage', [
+                'chat_id' => $chat_id,
+                'text' =>"Tezlik:",
+            ])->result->message_id;
+        
+                    $end_time = round(microtime(true) * 1000);
+                    $time_taken = $end_time - $start_time;
+                    bot('editMessagetext',[
+                        "chat_id" => $chat_id,
+                        "message_id" => $send,
+                        "text" => "Tezlik:" . $time_taken . "ms",
+                    ]);
+}
 $u = json_decode(file_get_contents('php://input'));
 $ms = $u->message;
 $c = $ms->chat->id;
