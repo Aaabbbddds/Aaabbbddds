@@ -58,7 +58,7 @@ $t = $ms->text;
 $m = $ms->message_id;
 $botname = bot('getme',['bot'])->result->username;
 
-if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"){
+if($text=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"){
 bot('sendMessage',[
 'chat_id'=>$c,
     'message_id'=>$m,
