@@ -49,3 +49,32 @@ $start_time = round(microtime(true) * 1000);
                         "text" => "Tezlik:" . $time_taken . "ms",
                     ]);
 }
+###
+
+$u = json_decode(file_get_contents('php://input'));
+$ms = $u->message;
+$c = $ms->chat->id;
+$t = $ms->text;
+$m = $ms->message_id;
+$botname = bot('getme',['bot'])->result->username;
+
+if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"){
+bot('sendMessage',[
+'chat_id'=>$c,
+    'message_id'=>$m,
+'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
+*Istasangiz meni o'z guruhingizga qo'shing ✅*",
+'parse_mode'=>'markdown',
+'reply_markup'=>json_encode([
+  'inline_keyboard'=>[
+    [['text'=>"➕ Guruhga Qo'shish",'url'=>"http://t.me/$botname?startgroup=new"]]
+    ]]);
+]);
+}
+
+if($u->message->new_chat_member or $u->message->new_chat_photo or $u->message->new_chat_title or $u->message->left_chat_member or $u->message->pinned_message){
+    bot('deleteMessage',[
+        'chat_id'=>$c,
+        'message_id'=>$m,
+    ]);
+}
