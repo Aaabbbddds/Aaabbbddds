@@ -34,7 +34,7 @@ $from_id = $message->from->id;
 $chat_id = $message->chat->id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-if(preg_match('/^\/([Ss]tart)/',$text)){
+if(preg_match('/^\/([Ss]tartt)/',$text)){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $chat_id,
