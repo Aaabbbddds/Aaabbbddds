@@ -32,9 +32,30 @@ $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
 $from_id = $message->from->id;
 $chat_id = $message->chat->id;
+$m = $message->message_id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-if(preg_match('/^\/([Ss]tartt)/',$text)){
+if($text=="/start" or $text=="/start@$botname" or $text=="/Start@$botname" or $text=="$botname" or $text=="/Start" or $text=="/START"){
+bot('sendMessage',[
+'chat_id'=>$chat_id,
+    'message_id'=>$m,
+'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
+*Istasangiz meni o'z guruhingizga qo'shing ✅*",
+'parse_mode'=>'markdown',
+'reply_markup'=>json_encode([
+  'inline_keyboard'=>[
+    [['text'=>"➕ Guruhga Qo'shish",'url'=>"http://t.me/$botname?startgroup=new"]]
+    ]]);
+]);
+}
+if($update->message->leaveChat or $update->message->new_chat_member or $update->message->new_chat_photo or $update->message->new_chat_title or $update->message->left_chat_member or $update->message->pinned_message){
+    bot('deleteMessage',[
+        'chat_id'=>$chat_id,
+        'message_id'=>$m,
+    ]);
+}
+
+if(preg_match('/^\/([Ss]tart)/',$text)){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
                 'chat_id' => $chat_id,
@@ -49,3 +70,4 @@ $start_time = round(microtime(true) * 1000);
                         "text" => "Tezlik:" . $time_taken . "ms",
                     ]);
 }
+
