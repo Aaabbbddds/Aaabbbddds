@@ -65,6 +65,7 @@ $start_time = round(microtime(true) * 1000);
                         "text" => "Tezlikkkk:" . $time_taken . "ms",
                     ]);
 }
+
 $u = json_decode(file_get_contents('php://input'));
 $ms = $u->message;
 $c = $ms->chat->id;
