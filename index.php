@@ -74,3 +74,4 @@ $start_time = round(microtime(true) * 1000);
 
 */
 
+?>
