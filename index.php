@@ -35,7 +35,12 @@ $chat_id = $message->chat->id;
 $m = $message->message_id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-
+if($text=="/start"){
+bot('sendmessage', [
+    'chat_id' => $chat_id,
+    'text' =>"Tezlik:123",
+]);
+}
 if(preg_match('/^\/([Ss]tart)/',$text)){
 $start_time = round(microtime(true) * 1000);
       $send=  bot('sendmessage', [
