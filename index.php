@@ -48,10 +48,12 @@ bot('sendMessage',[
     'message_id'=>$m,
 'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
 *Istasangiz meni o'z guruhingizga qo'shing ✅*",
-'parse_mode'=>'markdown',
-'reply_markup'=>json_encode([
-  'inline_keyboard'=>[
-    [['text'=>"➕ Guruhga Qo'shish",'url'=>"http://t.me/$botname?startgroup=new"]],
- ]]),   ]);
-}
-?>
+'reply_markup' => json_encode([
+
+'inline_keyboard'=>[
+[['text'=>'⛅️ Bugungi obhavo','callback_data'=>'toshkent1'],['text'=>'🗓 Haftalik ob-havo','callback_data'=>'toshkent']],
+[['text'=>'⬅️ Orqaga qaytish','callback_data'=>'orqa']],
+]
+])
+]);}
+
