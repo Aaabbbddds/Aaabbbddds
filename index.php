@@ -44,7 +44,7 @@ bot('sendmessage', [
 }
 if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"){
 bot('sendMessage',[
-'chat_id'=>$c,
+'chat_id'=>$chat_id,
     'message_id'=>$m,
 'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
 *Istasangiz meni o'z guruhingizga qo'shing ✅*",
