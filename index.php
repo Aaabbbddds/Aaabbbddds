@@ -70,4 +70,7 @@ $start_time = round(microtime(true) * 1000);
                         "text" => "Tezlik:" . $time_taken . "ms",
                     ]);
 }
+/*
+
+*/
 
