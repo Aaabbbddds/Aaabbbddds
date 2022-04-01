@@ -32,6 +32,7 @@ $update = json_decode(file_get_contents('php://input'));
 $message = $update->message;
 $from_id = $message->from->id;
 $chat_id = $message->chat->id;
+$t = $message->text;
 $m = $message->message_id;
 $text = $message->text;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
@@ -41,23 +42,16 @@ bot('sendmessage', [
     'text' =>"Tezlik:123",
 ]);
 }
-if(preg_match('/^\/([Ss]tart)/',$text)){
-$start_time = round(microtime(true) * 1000);
-      $send=  bot('sendmessage', [
-                'chat_id' => $chat_id,
-                'text' =>"Tezlik:",
-            ])->result->message_id;
-        
-                    $end_time = round(microtime(true) * 1000);
-                    $time_taken = $end_time - $start_time;
-                    bot('editMessagetext',[
-                        "chat_id" => $chat_id,
-                        "message_id" => $send,
-                        "text" => "Tezlik:" . $time_taken . "ms",
-                    ]);
+if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"){
+bot('sendMessage',[
+'chat_id'=>$c,
+    'message_id'=>$m,
+'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
+*Istasangiz meni o'z guruhingizga qo'shing ✅*",
+'parse_mode'=>'markdown',
+'reply_markup'=>json_encode([
+  'inline_keyboard'=>[
+    [['text'=>"➕ Guruhga Qo'shish",'url'=>"http://t.me/$botname?startgroup=new"]],
+ ]]),   ]);
 }
-/*
-
-*/
-
 ?>
