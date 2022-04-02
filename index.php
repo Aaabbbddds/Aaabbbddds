@@ -37,20 +37,15 @@ $m = $message->message_id;
 $text = $message->text;
 $botname = bot('getme',['bot'])->result->username;
 //====================ᵗᶦᵏᵃᵖᵖ======================//
-/*if($text=="/start"){
-bot('sendmessage', [
-    'chat_id' => $chat_id,
-    'text' =>"Tezlik:123",
-]);
-}*/
+
 if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"or $t=="@$botname"){
 bot('sendMessage',[
 'chat_id'=>$chat_id,
     'message_id'=>$m,
 'text'=>"*👋 Salom men guruhlarda kirdi-chiqdi xabarlarni oʻchiruvchi botman!*
 *Istasangiz meni o'z guruhingizga qo'shing ✅*",
-'reply_markup' => json_encode([
 'parse_mode'=>'markdown',
+'reply_markup' => json_encode([
 'inline_keyboard'=>[
     [['text'=>"➕ Guruhga Qo'shish",'url'=>"http://t.me/$botname?startgroup=new"]],
 ]
