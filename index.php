@@ -36,6 +36,7 @@ $t = $message->text;
 $m = $message->message_id;
 $text = $message->text;
 $botname = bot('getme',['bot'])->result->username;
+$u = json_decode(file_get_contents('php://input'));
 //====================ᵗᶦᵏᵃᵖᵖ======================//
 
 if($t=="/start" or $t=="/start@$botname" or $t=="/Start@$botname" or $t=="$botname" or $t=="/Start" or $t=="/START"or $t=="@$botname"){
@@ -51,4 +52,11 @@ bot('sendMessage',[
 ]
 ])
 ]);}
+
+if($u->message->leaveChat or $u->message->new_chat_member or $u->message->new_chat_photo or $u->message->new_chat_title or $u->message->left_chat_member or $u->message->pinned_message){
+    bot('deleteMessage',[
+        'chat_id'=>$chat_id,
+        'message_id'=>$m,
+    ]);
+}
 
