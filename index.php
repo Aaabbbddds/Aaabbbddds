@@ -52,8 +52,24 @@ bot('sendMessage',[
 ]
 ])
 ]);}
+$message_id = $message->message_id;
+$uid = $message->from->id;
+$new = $message->new_chat_member;
+$left = $message->left_chat_member;
+$newid = $message->new_chat_member->id;
+if($new){
+	if($newid == $uid){
+    send('DeleteMessage',[
+      'message_id'=>$message_id,
+    ]);
+  }
+}
 
-if($u->message->leaveChat or $u->message->new_chat_member or $u->message->new_chat_photo or $u->message->new_chat_title or $u->message->left_chat_member or $u->message->pinned_message){
+if($left){
+  bot('DeleteMessage',[
+    'message_id'=>$message_id,
+  ]);
+}if($u->message->leaveChat or $u->message->new_chat_member or $u->message->new_chat_photo or $u->message->new_chat_title or $u->message->left_chat_member or $u->message->pinned_message){
     bot('deleteMessage',[
         'chat_id'=>$chat_id,
         'message_id'=>$m,
